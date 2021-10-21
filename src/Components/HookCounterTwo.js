@@ -31,15 +31,21 @@ export default HookCounterTwo*/
 function HookCounterTwo() {
   const InitialCount = 0;
   const [count, setCount] = useState(InitialCount);
+  
+  function decreaseHandler(){
+    
+      count > 0 ? setCount(prevCount =>prevCount-1):setCount(InitialCount)
+  }
+
   return (
-    <div>
-      count: {count}
+    <div style={{ textAlign: "center" }}>
+      <h1>{count}</h1>
       <br /> <br />
-      <button onClick={() => setCount(InitialCount)}>Reset</button>
-      <button onClick={() => setCount(prevCount => prevCount + 1)}>
+      <button onClick={() => setCount((prevCount) => prevCount + 1)}>
         Increase
       </button>
-      <button onClick={() => setCount(prevCount => prevCount - 1)}>
+      <button onClick={() => setCount(InitialCount)}>Reset</button>
+      <button onClick={decreaseHandler}>
         decrease
       </button>
     </div>

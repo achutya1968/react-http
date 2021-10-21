@@ -2,13 +2,15 @@ import React,{useState,useEffect} from  "react"
 import randomcolor from 'randomcolor'
 
  function Useeffect() {
-    const[count,setCount] = useState(0)
+   const initialCount = 0
+    const[count,setCount] = useState(initialCount)
     const [color,setColor] = useState('')
+   
 
     function increment(){
         setCount(prevCount => prevCount + 1)  
     }
-
+    
 
     function Decrement() {
       setCount(prevCount => prevCount - 1)
@@ -21,12 +23,29 @@ import randomcolor from 'randomcolor'
     
 
     return (
-        <div>
-        <h1 style={{color:color}}>{count}</h1>
-        <button onClick = {increment}>Increment</button>
-        <button onClick= {Decrement}>Decrement</button>  
-        </div>
-    )
+      <div style={{textAlign: "center" }}>
+      <h1>Counter</h1>
+        <h1 style={{ color: color, fontSize: "50px" }}>{count}</h1>
+        <button
+          style={{ background: "green", color: "white" }}
+          onClick={increment}
+        >
+          Increment
+        </button>
+        <button
+          style={{ background: "purple", color: "white" }}
+          onClick={() => setCount(initialCount)}
+        >
+          Reset
+        </button>
+        <button
+          style={{ background: "red", color: "white" }}
+          onClick={Decrement}
+        >
+          Decrement
+        </button>
+      </div>
+    );
 }
 
 export default Useeffect

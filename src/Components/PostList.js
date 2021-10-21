@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
-
-
-
-
  
  
  class PostList extends Component {
@@ -46,7 +41,9 @@ import axios from 'axios'
                  posts.length?
                  posts.map(post => <div key={post.id}>{post.title}</div>):null  
                 }
-                {errorMessage ? <div>{errorMessage}</div>:null}
+                {
+                    errorMessage ? <div>{errorMessage}</div>:null
+                }
              </div>
          )
      }
@@ -68,8 +65,8 @@ import axios from 'axios'
 
       componentDidMount(){
           axios.get("https://jsonplaceholder.typicode.com/posts")
-          .then(res => {
-              console.log(res)
+          .then(resp => {
+              console.log(resp)
               this.setState({
                   posts:res.data
               })
@@ -84,7 +81,6 @@ import axios from 'axios'
           })
       }
       
-
      render() {
          const {posts,message} = this.state
          return (
